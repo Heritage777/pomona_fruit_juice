@@ -1,0 +1,659 @@
+
+/* ==========================
+   ADMIN LOGIN
+========================== */
+
+.admin-login-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  background:
+    radial-gradient(circle at top left, rgba(124, 92, 252, 0.2), transparent 40%),
+    linear-gradient(135deg, #17121f, #2b1d40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.admin-login-card {
+  background: #ffffff;
+  padding: 40px;
+  border: 1px solid #ede6ff;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+}
+
+.admin-login-card h2 {
+  color: #3e3259;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  margin: 0 0 10px;
+}
+
+.admin-login-card p {
+  color: #7c6f9c;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 26px;
+}
+
+.admin-login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-login-card input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid #e2dbfc;
+  background: #fcfbff;
+  color: #3e3259;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-login-card input:focus {
+  border-color: #7c5cfc;
+  box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.12);
+}
+
+.admin-login-btn {
+  background: linear-gradient(135deg, #8a6efd, #6d4be8);
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(124, 92, 252, 0.22);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.admin-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 22px rgba(124, 92, 252, 0.3);
+}
+
+.error-text {
+  color: #e74c3c;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ==========================
+   ADMIN DASHBOARD
+========================== */
+
+.admin-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fbf9ff 0%, #f4efff 100%);
+  padding-bottom: 60px;
+  color: #3e3259;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ==========================
+   DASHBOARD HEADER
+========================== */
+
+.admin-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #ede6ff;
+  box-shadow: 0 4px 18px rgba(92, 60, 160, 0.04);
+}
+
+.admin-brand h1 {
+  font-size: 22px;
+  font-weight: 850;
+  letter-spacing: -0.7px;
+  color: #3e3259;
+  margin: 0 0 4px;
+}
+
+.admin-brand span {
+  font-size: 12px;
+  color: #8b78ba;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background: #fff0f1;
+  color: #c62828;
+  border: 1px solid #ffdbdf;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.logout-btn:hover {
+  background: #ffe2e5;
+  transform: translateY(-1px);
+}
+
+/* ==========================
+   MAIN CONTENT
+========================== */
+
+.admin-content {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 36px 32px;
+  box-sizing: border-box;
+}
+
+.orders-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.orders-toolbar h2 {
+  color: #3e3259;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  margin: 0;
+}
+
+.refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ede6ff;
+  color: #6d4be8;
+  border: 1px solid #dfd3ff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.refresh-btn:hover {
+  background: #e2d7ff;
+  transform: translateY(-1px);
+}
+
+/* ==========================
+   ORDER GRID
+========================== */
+
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
+  gap: 22px;
+  align-items: start;
+}
+
+.order-card {
+  min-width: 0;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid #e9e1ff;
+  box-shadow: 0 5px 20px rgba(92, 60, 160, 0.055);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  border-color: #d8caff;
+  box-shadow: 0 12px 30px rgba(92, 60, 160, 0.1);
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f0ebff;
+}
+
+.customer-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 800;
+  color: #3e3259;
+}
+
+/* ==========================
+   ORDER STATUS
+========================== */
+
+.status-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+}
+
+.status-badge.pending-delivery-quote {
+  background: #fff3e0;
+  color: #a85b08;
+}
+
+.status-badge.quote-sent {
+  background: #e8f9ee;
+  color: #218447;
+}
+
+/* ==========================
+   ORDER DETAILS
+========================== */
+
+.order-meta-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.order-meta-details p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #6b5c8c;
+  overflow-wrap: anywhere;
+}
+
+.order-items-summary {
+  background: #faf8ff;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #f0ebff;
+  font-size: 13px;
+}
+
+.order-items-summary h4 {
+  margin: 0 0 10px;
+  color: #3e3259;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.order-items-summary ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #7c6f9c;
+}
+
+.order-items-summary li {
+  padding: 3px 0;
+  line-height: 1.5;
+}
+
+/* ==========================
+   PRICING
+========================== */
+
+.pricing-box {
+  background: #f7f3ff;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #ede6ff;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 13px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  color: #7c6f9c;
+}
+
+.price-row span:last-child {
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.price-row.total {
+  font-weight: 800;
+  color: #3e3259;
+  border-top: 1px dashed #d8ccff;
+  padding-top: 12px;
+  margin-top: 3px;
+}
+
+/* ==========================
+   DELIVERY QUOTE INPUT
+========================== */
+
+.quote-input-group {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.quote-input-group input {
+  min-width: 0;
+  width: 100%;
+  flex: 1;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid #e2dbfc;
+  background: #fcfbff;
+  color: #3e3259;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.quote-input-group input:focus {
+  border-color: #7c5cfc;
+  box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.1);
+}
+
+.quote-input-group button {
+  flex-shrink: 0;
+  background: #7c5cfc;
+  color: #ffffff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.quote-input-group button:hover {
+  background: #6543e8;
+  transform: translateY(-1px);
+}
+
+/* ==========================
+   WHATSAPP QUOTE BUTTON
+========================== */
+
+.whatsapp-send-quote-btn {
+  width: 100%;
+  box-sizing: border-box;
+  background: #25d366;
+  color: #ffffff;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.whatsapp-send-quote-btn:hover {
+  background: #1fbd5b;
+  transform: translateY(-1px);
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+body.dark-mode .admin-dashboard {
+  background: linear-gradient(180deg, #17121f 0%, #1d1728 100%);
+  color: #ded5ef;
+}
+
+body.dark-mode .admin-header {
+  background: rgba(27, 21, 37, 0.94);
+  border-bottom-color: #403052;
+}
+
+body.dark-mode .admin-brand h1,
+body.dark-mode .orders-toolbar h2,
+body.dark-mode .customer-name,
+body.dark-mode .order-items-summary h4,
+body.dark-mode .price-row.total {
+  color: #f4efff;
+}
+
+body.dark-mode .admin-brand span {
+  color: #b6a9ce;
+}
+
+body.dark-mode .order-card {
+  background: #21192d;
+  border-color: #403052;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+body.dark-mode .order-card:hover {
+  border-color: #70569d;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .order-card-header {
+  border-bottom-color: #403052;
+}
+
+body.dark-mode .order-meta-details p,
+body.dark-mode .order-items-summary ul,
+body.dark-mode .price-row {
+  color: #b6a9ce;
+}
+
+body.dark-mode .order-items-summary {
+  background: #292036;
+  border-color: #403052;
+}
+
+body.dark-mode .pricing-box {
+  background: #292036;
+  border-color: #403052;
+}
+
+body.dark-mode .price-row.total {
+  border-top-color: #514064;
+}
+
+body.dark-mode .quote-input-group input {
+  background: #17121f;
+  border-color: #403052;
+  color: #f4efff;
+}
+
+body.dark-mode .quote-input-group input::placeholder {
+  color: #9183a9;
+}
+
+body.dark-mode .quote-input-group input:focus {
+  border-color: #b9a0ff;
+}
+
+body.dark-mode .refresh-btn {
+  background: #342747;
+  border-color: #514064;
+  color: #d0bfff;
+}
+
+body.dark-mode .refresh-btn:hover {
+  background: #403052;
+}
+
+body.dark-mode .admin-login-card {
+  background: #21192d;
+  border-color: #403052;
+}
+
+body.dark-mode .admin-login-card h2 {
+  color: #f4efff;
+}
+
+body.dark-mode .admin-login-card p {
+  color: #b6a9ce;
+}
+
+body.dark-mode .admin-login-card input {
+  background: #17121f;
+  border-color: #403052;
+  color: #f4efff;
+}
+
+body.dark-mode .admin-login-card input:focus {
+  border-color: #b9a0ff;
+  box-shadow: 0 0 0 3px rgba(185, 160, 255, 0.12);
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 900px) {
+  .admin-header {
+    padding: 18px 24px;
+  }
+
+  .admin-content {
+    padding: 28px 24px;
+  }
+
+  .orders-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 310px), 1fr));
+    gap: 18px;
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 600px) {
+  .admin-header {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .admin-brand h1 {
+    font-size: 18px;
+  }
+
+  .admin-brand span {
+    font-size: 11px;
+  }
+
+  .logout-btn {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .admin-content {
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+
+  .orders-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .orders-toolbar h2 {
+    font-size: 22px;
+  }
+
+  .refresh-btn {
+    width: 100%;
+  }
+
+  .orders-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .order-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .admin-login-card {
+    padding: 30px 22px;
+    border-radius: 20px;
+  }
+
+  .quote-input-group {
+    flex-direction: column;
+  }
+
+  .quote-input-group button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* ==========================
+   ACCESSIBILITY
+========================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-login-btn,
+  .logout-btn,
+  .refresh-btn,
+  .order-card,
+  .quote-input-group button,
+  .whatsapp-send-quote-btn {
+    transition: none;
+  }
+
+  .admin-login-btn:hover,
+  .logout-btn:hover,
+  .refresh-btn:hover,
+  .order-card:hover,
+  .quote-input-group button:hover,
+  .whatsapp-send-quote-btn:hover {
+    transform: none;
+  }
+}

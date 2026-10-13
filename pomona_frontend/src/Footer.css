@@ -1,0 +1,253 @@
+
+/* ==========================
+   FOOTER SECTION
+========================== */
+
+.footer-section {
+  width: 100%;
+  padding: 40px 48px;
+  box-sizing: border-box;
+  background-color: #f7f3ff;
+  border-top: 1px solid #ede6ff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* ==========================
+   LEFT SECTION
+========================== */
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.footer-logo-img {
+  display: block;
+  width: auto;
+  height: 38px;
+  max-width: 100%;
+  margin-bottom: 4px;
+  object-fit: contain;
+}
+
+.footer-copyright {
+  margin: 0;
+  color: #7c6f9c;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.footer-developer {
+  margin: 0;
+  color: #8b78ba;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.dev-name {
+  color: #7c5cfc;
+  font-weight: 700;
+}
+
+/* ==========================
+   CENTER NAVIGATION
+========================== */
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.footer-link {
+  color: #6d4be8;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #4f2ec9;
+}
+
+/* ==========================
+   RIGHT SECTION
+========================== */
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c5cfc;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icon:hover {
+  color: #5c3ce8;
+  transform: translateY(-2px);
+}
+
+/* ==========================
+   SIGNATURE
+========================== */
+
+.footer-signature {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #8b78ba;
+  font-family: Georgia, "Brush Script MT", cursive, serif;
+  font-size: 17px;
+  font-style: italic;
+}
+
+.footer-signature svg {
+  color: #8b78ba;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 1024px) {
+  .footer-section {
+    padding: 36px 28px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .footer-left {
+    align-items: center;
+  }
+
+  .footer-right {
+    align-items: center;
+  }
+
+  .footer-links {
+    gap: 20px;
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 640px) {
+  .footer-section {
+    padding: 32px 20px;
+  }
+
+  .footer-container {
+    gap: 22px;
+  }
+
+  .footer-links {
+    gap: 16px 20px;
+  }
+
+  .footer-link {
+    font-size: 13px;
+  }
+
+  .footer-socials {
+    gap: 18px;
+  }
+
+  .footer-signature {
+    font-size: 16px;
+  }
+}
+
+/* ==========================
+   ACCESSIBILITY
+========================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-link,
+  .social-icon {
+    transition: none;
+  }
+}
+
+
+
+
+/* ==========================
+   FOOTER DARK MODE
+========================== */
+
+body.dark-mode .footer-section {
+  background-color: #1b1525;
+  border-top-color: #352744;
+}
+
+body.dark-mode .footer-copyright {
+  color: #b6a9ce;
+}
+
+body.dark-mode .footer-developer {
+  color: #b6a9ce;
+}
+
+body.dark-mode .dev-name {
+  color: #b9a0ff;
+}
+
+body.dark-mode .footer-link {
+  color: #c5adff;
+}
+
+body.dark-mode .footer-link:hover {
+  color: #e0d4ff;
+}
+
+body.dark-mode .social-icon {
+  color: #b9a0ff;
+}
+
+body.dark-mode .social-icon:hover {
+  color: #d8c9ff;
+}
+
+body.dark-mode .footer-signature {
+  color: #b6a9ce;
+}
+
+body.dark-mode .footer-signature svg {
+  color: #b9a0ff;
+}

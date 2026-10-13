@@ -1,0 +1,494 @@
+
+/* ==========================
+   NAVBAR BASE
+========================== */
+
+.navbar-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 48px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f0ebff;
+  box-shadow: 0 4px 20px rgba(124, 92, 252, 0.05);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+/* ==========================
+   BRAND AND LOGO
+========================== */
+
+.navbar-brand-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.brand-logo-img {
+  display: block;
+  height: 52px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.brand-tagline {
+  margin-top: -10px;
+  margin-left: 44px;
+  color: #7b6d9c;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+/* ==========================
+   DESKTOP NAVIGATION
+========================== */
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.nav-link {
+  color: #5c5275;
+  font-size: 15.5px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #7c5cfc;
+}
+
+.nav-link.active {
+  font-weight: 600;
+}
+
+/* ==========================
+   RIGHT ACTIONS
+========================== */
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  color: #5c5275;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: #7c5cfc;
+}
+
+.cart-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  box-sizing: content-box;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background-color: #7c5cfc;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ==========================
+   ORDER BUTTONS
+========================== */
+
+.order-now-btn,
+.mobile-order-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #8a6efd 0%, #6d42df 100%);
+  box-shadow: 0 4px 14px rgba(124, 92, 252, 0.2);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-now-btn:hover,
+.mobile-order-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(124, 92, 252, 0.3);
+}
+
+/* ==========================
+   HAMBURGER BUTTON
+========================== */
+
+.hamburger-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #5c5275;
+  cursor: pointer;
+}
+
+.hamburger-btn:hover {
+  color: #7c5cfc;
+  background-color: #f7f3ff;
+}
+
+/* ==========================
+   MOBILE DROPDOWN
+========================== */
+
+.mobile-menu {
+  display: none;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 1100px) {
+  .navbar-header {
+    padding: 14px 28px;
+  }
+
+  .navbar-container {
+    gap: 18px;
+  }
+
+  .navbar-links {
+    gap: 20px;
+  }
+
+  .navbar-actions {
+    gap: 14px;
+  }
+
+  .brand-logo-img {
+    height: 46px;
+  }
+
+  .order-now-btn {
+    padding: 11px 20px;
+  }
+}
+
+/* ==========================
+   MOBILE NAVIGATION
+========================== */
+
+@media (max-width: 850px) {
+  .navbar-header {
+    padding: 12px 22px;
+  }
+
+  .navbar-container {
+    gap: 12px;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .navbar-actions {
+    gap: 14px;
+  }
+
+  .brand-logo-img {
+    height: 44px;
+  }
+
+  .brand-tagline {
+    margin-top: -8px;
+    margin-left: 37px;
+    font-size: 9px;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 22px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee7fb;
+    box-shadow: 0 12px 24px rgba(50, 30, 90, 0.08);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.22s ease,
+      transform 0.22s ease,
+      visibility 0.22s ease;
+  }
+
+  .mobile-menu.mobile-menu-open {
+    padding-top: 14px;
+    padding-bottom: 20px;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mobile-nav-link {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border-radius: 10px;
+    color: #5c5275;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    color: #7c5cfc;
+    background-color: #f7f3ff;
+  }
+
+  .mobile-nav-link.active {
+    font-weight: 600;
+  }
+
+  .mobile-order-btn {
+    display: block;
+    margin-top: 10px;
+    padding: 13px 20px;
+  }
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width: 480px) {
+  .navbar-header {
+    padding: 11px 14px;
+  }
+
+  .navbar-container {
+    gap: 8px;
+  }
+
+  .brand-logo-img {
+    height: 36px;
+  }
+
+  .brand-tagline {
+    margin-top: -6px;
+    margin-left: 30px;
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+
+  .navbar-actions {
+    gap: 8px;
+  }
+
+  .icon-btn {
+    padding: 3px;
+  }
+
+  .icon-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .hamburger-btn {
+    padding: 3px;
+  }
+
+  .hamburger-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .navbar-actions > .order-now-btn {
+    display: none;
+  }
+
+  .mobile-menu {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .mobile-menu.mobile-menu-open {
+    padding-top: 12px;
+    padding-bottom: 16px;
+  }
+}
+
+/* ==========================
+   EXTRA SMALL SCREENS
+========================== */
+
+@media (max-width: 350px) {
+  .navbar-header {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .brand-logo-img {
+    height: 32px;
+  }
+
+  .brand-tagline {
+    margin-left: 26px;
+    font-size: 7px;
+  }
+
+  .navbar-actions {
+    gap: 5px;
+  }
+
+  .navbar-actions .icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hamburger-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* ==========================
+   ACCESSIBILITY
+========================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu,
+  .mobile-nav-link,
+  .nav-link,
+  .icon-btn,
+  .order-now-btn,
+  .mobile-order-btn {
+    transition: none;
+  }
+}
+
+
+
+
+/* ==========================
+   NAVBAR DARK MODE
+========================== */
+
+body.dark-mode .navbar-header {
+  background-color: #1b1525;
+  border-bottom-color: #352744;
+}
+
+body.dark-mode .brand-tagline {
+  color: #b6a9ce;
+}
+
+body.dark-mode .nav-link {
+  color: #ded5ef;
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-link.active {
+  color: #b9a0ff;
+}
+
+body.dark-mode .icon-btn,
+body.dark-mode .hamburger-btn {
+  color: #ded5ef;
+}
+
+body.dark-mode .icon-btn:hover,
+body.dark-mode .hamburger-btn:hover {
+  color: #b9a0ff;
+}
+
+body.dark-mode .cart-badge {
+  border-color: #1b1525;
+}
+
+body.dark-mode .mobile-menu {
+  background-color: #1b1525;
+  border-bottom-color: #352744;
+}
+
+body.dark-mode .mobile-nav-link {
+  color: #ded5ef;
+}
+
+body.dark-mode .mobile-nav-link:hover,
+body.dark-mode .mobile-nav-link.active {
+  color: #b9a0ff;
+  background-color: #2b2038;
+}

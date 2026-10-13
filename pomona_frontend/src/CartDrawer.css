@@ -1,0 +1,631 @@
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20, 15, 35, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeIn 0.2s ease;
+}
+
+.cart-drawer {
+  width: 100%;
+  max-width: 440px;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 30px rgba(124, 92, 252, 0.15);
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cart-header {
+  padding: 24px;
+  border-bottom: 1px solid #f0ebff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-header h2 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #3e3259;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #7c6f9c;
+  cursor: pointer;
+}
+
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.empty-cart {
+  text-align: center;
+  padding-top: 60px;
+  color: #7c6f9c;
+}
+
+.empty-cart p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #3e3259;
+  margin: 0 0 4px 0;
+}
+
+.cart-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: #f7f3ff;
+  border-radius: 14px;
+  border: 1px solid #ede6ff;
+  position: relative;
+}
+
+.cart-item-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-details h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3e3259;
+  margin: 0 0 4px 0;
+}
+
+.cart-item-price {
+  font-size: 13px;
+  color: #7c5cfc;
+  font-weight: 600;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid #e2dbfc;
+}
+
+.cart-item-controls button {
+  background: none;
+  border: none;
+  color: #7c5cfc;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cart-item-controls span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #3e3259;
+  min-width: 16px;
+  text-align: center;
+}
+
+.remove-item-btn {
+  background: none;
+  border: none;
+  color: #9d81fd;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.remove-item-btn:hover {
+  color: #ff5c5c;
+}
+
+.cart-footer {
+  padding: 24px;
+  border-top: 1px solid #f0ebff;
+  background-color: #fcfbff;
+}
+
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #7c6f9c;
+}
+
+.total-row {
+  font-weight: 700;
+  color: #3e3259;
+  font-size: 16px;
+  border-top: 1px dashed #e2dbfc;
+  padding-top: 8px;
+  margin-top: 4px;
+}
+
+.bank-preview-box {
+  background-color: #ede6ff;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  color: #4a3e68;
+}
+
+.bank-title {
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: #3e3259;
+}
+
+.bank-detail {
+  margin: 2px 0;
+}
+
+.whatsapp-ticket-btn {
+  width: 100%;
+  background-color: #25D366; /* WhatsApp brand green for clear recognition, or use #7c5cfc if you prefer brand purple */
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-ticket-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+
+
+/* Printable Ticket Card Styling - Fully Branded Lavender Theme */
+.downloadable-ticket-card {
+  width: 420px;
+  background: #ffffff;
+  padding: 32px 28px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #3e3259;
+  border-radius: 20px;
+  border: 2px dashed #9d81fd;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(124, 92, 252, 0.12);
+}
+
+/* Brand Header */
+.ticket-brand-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ticket-brand-header h3 {
+  font-size: 24px;
+  font-weight: 900;
+  color: #7c5cfc;
+  margin: 0 0 4px 0;
+  letter-spacing: 1.5px;
+}
+
+.ticket-brand-header span {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9d81fd;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: #f7f3ff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Metadata Bar */
+.ticket-meta-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #7c6f9c;
+  background-color: #f7f3ff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.ticket-meta-info p {
+  margin: 0;
+}
+
+/* Divider Line */
+.ticket-divider-line {
+  border-bottom: 2px dashed #ede6ff;
+  margin: 16px 0;
+}
+
+/* Items List & Rows */
+.ticket-items-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ticket-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3e3259;
+  width: 100%;
+}
+
+.ticket-item-name {
+  flex: 1;
+  padding-right: 12px;
+}
+
+.ticket-item-price {
+  color: #7c5cfc;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Calculation Breakdown */
+.ticket-calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #7c6f9c;
+  margin: 6px 0;
+  width: 100%;
+}
+
+.ticket-calc-row.total {
+  font-size: 18px;
+  font-weight: 800;
+  color: #7c5cfc;
+  margin-top: 12px;
+  border-top: 2px solid #ede6ff;
+  padding-top: 12px;
+}
+
+/* Bank Details Footer Box */
+.ticket-footer-note {
+  margin-top: 24px;
+  background: linear-gradient(135deg, #f7f3ff 0%, #ede6ff 100%);
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #3e3259;
+  border: 1px solid #e2dbfc;
+}
+
+.ticket-footer-note p {
+  margin: 0 0 6px 0;
+}
+
+.footer-tag {
+  font-family: 'Georgia', 'Brush Script MT', cursive, serif;
+  font-style: italic;
+  color: #9d81fd;
+  font-size: 13px;
+  margin-top: 6px !important;
+}   
+
+
+
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-instruction {
+  font-size: 13px;
+  color: #7c6f9c;
+  margin: 0 0 4px 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #3e3259;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e2dbfc;
+  background-color: #fcfbff;
+  font-family: inherit;
+  font-size: 14px;
+  color: #3e3259;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #7c5cfc;
+}
+
+.form-error-msg {
+  background-color: #ffe6e6;
+  color: #d9534f;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.form-actions-inline {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.back-btn {
+  background: none;
+  border: 1px solid #e2dbfc;
+  color: #7c6f9c;
+  padding: 12px 16px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tbd-text {
+  color: #e67e22;
+  font-weight: 600;
+}
+
+.success-body {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.success-icon-box {
+  width: 80px;
+  height: 80px;
+  background-color: #eefcf3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+}
+
+.success-body h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #3e3259;
+  margin: 0 0 10px 0;
+}
+
+.success-notice {
+  font-size: 13px;
+  color: #7c6f9c;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+
+/* ==========================
+   CART & ORDER DARK MODE
+========================== */
+
+/* Cart drawer */
+body.dark-mode .cart-drawer {
+  background-color: #1b1525;
+}
+
+body.dark-mode .cart-header {
+  border-bottom-color: #403052;
+}
+
+body.dark-mode .cart-header h2,
+body.dark-mode .cart-item-details h4,
+body.dark-mode .cart-item-controls span,
+body.dark-mode .total-row,
+body.dark-mode .bank-title {
+  color: #f4efff;
+}
+
+body.dark-mode .close-btn,
+body.dark-mode .empty-cart,
+body.dark-mode .summary-row {
+  color: #b6a9ce;
+}
+
+body.dark-mode .empty-cart p {
+  color: #f4efff;
+}
+
+body.dark-mode .cart-item {
+  background-color: #292036;
+  border-color: #403052;
+}
+
+body.dark-mode .cart-item-price,
+body.dark-mode .cart-item-controls button,
+body.dark-mode .remove-item-btn {
+  color: #b9a0ff;
+}
+
+body.dark-mode .cart-item-controls {
+  background-color: #1b1525;
+  border-color: #403052;
+}
+
+body.dark-mode .cart-footer {
+  background-color: #21192d;
+  border-top-color: #403052;
+}
+
+body.dark-mode .total-row {
+  border-top-color: #403052;
+}
+
+body.dark-mode .bank-preview-box {
+  background-color: #342747;
+  color: #ded5ef;
+}
+
+body.dark-mode .whatsapp-ticket-btn {
+  /* Preserve WhatsApp's recognizable brand green */
+  background-color: #25D366;
+  color: #ffffff;
+}
+
+/* Printable order ticket */
+body.dark-mode .downloadable-ticket-card {
+  background-color: #21192d;
+  color: #f4efff;
+  border-color: #9d81fd;
+}
+
+body.dark-mode .ticket-brand-header h3,
+body.dark-mode .ticket-item-price,
+body.dark-mode .ticket-calc-row.total {
+  color: #b9a0ff;
+}
+
+body.dark-mode .ticket-brand-header span,
+body.dark-mode .ticket-meta-info {
+  background-color: #292036;
+  color: #c5b8dc;
+}
+
+body.dark-mode .ticket-divider-line {
+  border-bottom-color: #403052;
+}
+
+body.dark-mode .ticket-item-row {
+  color: #f4efff;
+}
+
+body.dark-mode .ticket-calc-row {
+  color: #b6a9ce;
+}
+
+body.dark-mode .ticket-calc-row.total {
+  border-top-color: #403052;
+}
+
+body.dark-mode .ticket-footer-note {
+  background: linear-gradient(135deg, #292036 0%, #342747 100%);
+  color: #ded5ef;
+  border-color: #403052;
+}
+
+body.dark-mode .footer-tag {
+  color: #b9a0ff;
+}
+
+/* Order form */
+body.dark-mode .form-instruction {
+  color: #b6a9ce;
+}
+
+body.dark-mode .form-group label {
+  color: #e0d4ff;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+  background-color: #21192d;
+  border-color: #403052;
+  color: #f4efff;
+}
+
+body.dark-mode .form-group input::placeholder,
+body.dark-mode .form-group textarea::placeholder {
+  color: #9183a9;
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus {
+  border-color: #b9a0ff;
+}
+
+body.dark-mode .back-btn {
+  border-color: #403052;
+  color: #c5b8dc;
+}
+
+body.dark-mode .tbd-text {
+  color: #ffb86b;
+}
+
+/* Success message */
+body.dark-mode .success-icon-box {
+  background-color: #20372c;
+}
+
+body.dark-mode .success-body h3 {
+  color: #f4efff;
+}
+
+body.dark-mode .success-notice {
+  color: #b6a9ce;
+}

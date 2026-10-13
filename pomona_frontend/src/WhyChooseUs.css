@@ -1,0 +1,214 @@
+.why-choose-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f9f7ff 60%, #f4f0ff 100%);
+  padding: 60px 48px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.why-choose-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.why-choose-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.header-accent-line {
+  width: 80px;
+  height: 3px;
+  background-color: #810000;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+
+.why-choose-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #5f008e;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* 4-Column Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Soft Lavender Circular Icon Wrapper */
+.feature-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ede7fd 0%, #f5f2ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #7c5cfc;
+  box-shadow: 0 4px 12px rgba(124, 92, 252, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.feature-item:hover .feature-icon-wrapper {
+  transform: translateY(-3px);
+}
+
+.feature-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #810000;
+  margin: 0 0 8px 0;
+}
+
+.feature-desc {
+  font-size: 14px;
+  color: #6e6485;
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 400;
+  width: 60%;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .why-choose-section {
+    padding: 40px 24px;
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr); /* Forces 2 items per row on mobile */
+    gap: 24px 16px;                         /* Adjusts spacing for smaller screens */
+  }
+  
+  .why-choose-section {
+    padding: 40px 16px;
+  }
+
+  .why-choose-title {
+    font-size: 26px;                         /* Slightly smaller title for mobile */
+  }
+}
+
+
+/* ==========================
+   WHY CHOOSE US DARK MODE
+========================== */
+
+body.dark-mode .why-choose-section {
+  background: linear-gradient(
+    135deg,
+    #17121f 0%,
+    #1d1728 60%,
+    #241a32 100%
+  );
+}
+
+body.dark-mode .why-choose-section .header-accent-line {
+  background-color: #b9a0ff;
+}
+
+body.dark-mode .why-choose-title {
+  color: #e0d4ff;
+}
+
+body.dark-mode .feature-icon-wrapper {
+  background: linear-gradient(
+    135deg,
+    #342747 0%,
+    #2a2038 100%
+  );
+  color: #c5adff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .feature-title {
+  color: #f0e7ff;
+}
+
+body.dark-mode .feature-desc {
+  color: #bdb1d1;
+}
+
+
+/* ==========================
+   WHY CHOOSE US SCROLL REVEAL
+========================== */
+
+.feature-item.reveal {
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+/* Features slide up into view */
+.feature-item.reveal:not(.active) {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Stagger the four feature items */
+.feature-item.reveal-stagger-1 {
+  transition-delay: 0s;
+}
+
+.feature-item.reveal-stagger-2 {
+  transition-delay: 0.12s;
+}
+
+.feature-item.reveal-stagger-3 {
+  transition-delay: 0.24s;
+}
+
+.feature-item.reveal-stagger-4 {
+  transition-delay: 0.36s;
+}
+
+/* Remove delay after reveal */
+.feature-item.reveal.active {
+  transition-delay: 0s;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .feature-item.reveal,
+  .feature-item.reveal:not(.active) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

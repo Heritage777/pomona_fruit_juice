@@ -1,0 +1,122 @@
+
+.stats-section {
+  padding: 60px 20px;
+  background-color: var(--bg-main, #f7f3ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats-container {
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.stat-card {
+  background-color: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, #e8defb);
+  padding: 32px 20px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(75, 40, 125, 0.08);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-purple, #7c5cfc);
+  box-shadow: 0 12px 28px rgba(124, 92, 252, 0.14);
+}
+
+.stat-number {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--text-primary, #3e3259);
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #7c5cfc 30%, #4b287d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--text-secondary, #7c6f9c);
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+  .stat-number {
+    font-size: 34px;
+  }
+}
+
+
+
+/* ==========================
+   DARK MODE
+========================== */
+
+body.dark-mode .stats-section {
+  background-color: #17121f;
+}
+
+body.dark-mode .stat-card {
+  background-color: #21192d;
+  border-color: #403052;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .stat-card:hover {
+  border-color: #8b63ff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .stat-number {
+  background: linear-gradient(135deg, #f3f0ff 30%, #8b63ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.dark-mode .stat-label {
+  color: #b6a9ce;
+}
+
+/* ==========================
+   STATS SCROLL REVEAL
+========================== */
+
+.stat-card.reveal {
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.stat-card.reveal:not(.active) {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.stat-card.reveal-stagger-1 { transition-delay: 0s; }
+.stat-card.reveal-stagger-2 { transition-delay: 0.12s; }
+.stat-card.reveal-stagger-3 { transition-delay: 0.24s; }
+.stat-card.reveal-stagger-4 { transition-delay: 0.36s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-card.reveal,
+  .stat-card.reveal:not(.active) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

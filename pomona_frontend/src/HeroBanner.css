@@ -1,0 +1,263 @@
+
+/* ==========================
+   HERO BANNER SECTION
+========================== */
+
+.hero-banner-section {
+  width: 100%;
+  padding: 24px 32px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+.hero-banner-container {
+  max-width: 1400px;
+  min-height: 420px;
+  margin: 0 auto;
+  padding: 64px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(44, 30, 76, 0.78) 0%,
+      rgba(60, 44, 95, 0.48) 52%,
+      rgba(20, 15, 35, 0.12) 100%
+    ),
+    url("./assets/lonimi.PNG") no-repeat center center;
+
+  background-size: cover;
+}
+
+/* ==========================
+   CONTENT
+========================== */
+
+.hero-banner-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 520px;
+}
+
+.hero-banner-title {
+  margin: 0 0 16px;
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-text {
+  color: #c7b5ff;
+}
+
+.hero-banner-subtitle {
+  margin: 0 0 32px;
+  color: #f0ebff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================
+   CTA BUTTON
+========================== */
+
+.hero-banner-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 50px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  color: #3e3259;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hero-banner-btn:hover {
+  background-color: #f6f3ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 1024px) {
+  .hero-banner-section {
+    padding: 24px;
+  }
+
+  .hero-banner-container {
+    min-height: 380px;
+    padding: 48px 36px;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(44, 30, 76, 0.82) 0%,
+        rgba(60, 44, 95, 0.55) 65%,
+        rgba(20, 15, 35, 0.2) 100%
+      ),
+      url("./assets/lonimi.PNG") no-repeat center center;
+    background-size: cover;
+  }
+
+  .hero-banner-content {
+    max-width: 100%;
+  }
+
+  .hero-banner-title {
+    font-size: 36px;
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 640px) {
+  .hero-banner-section {
+    padding: 16px;
+  }
+
+  .hero-banner-container {
+    min-height: 360px;
+    padding: 36px 22px;
+    border-radius: 20px;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(44, 30, 76, 0.84) 0%,
+        rgba(60, 44, 95, 0.64) 100%
+      ),
+      url("./assets/lonimi.PNG") no-repeat center center;
+    background-size: cover;
+  }
+
+  .hero-banner-title {
+    font-size: 30px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-banner-subtitle {
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+
+  .hero-banner-btn {
+    padding: 13px 24px;
+  }
+}
+
+/* ==========================
+   EXTRA SMALL SCREENS
+========================== */
+
+@media (max-width: 350px) {
+  .hero-banner-container {
+    min-height: 320px;
+    padding: 28px 18px;
+  }
+
+  .hero-banner-title {
+    font-size: 26px;
+  }
+}
+
+/* ==========================
+   ACCESSIBILITY
+========================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner-btn {
+    transition: none;
+  }
+}
+
+
+
+/* ==========================
+   HERO BANNER DARK MODE
+========================== */
+
+body.dark-mode .hero-banner-section {
+  background-color: #17121f;
+}
+
+body.dark-mode .hero-banner-container {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(23, 18, 31, 0.88) 0%,
+      rgba(36, 27, 48, 0.68) 52%,
+      rgba(20, 15, 35, 0.28) 100%
+    ),
+    url("./assets/lonimi.PNG") no-repeat center center;
+  background-size: cover;
+}
+
+body.dark-mode .highlight-text {
+  color: #cbb5ff;
+}
+
+body.dark-mode .hero-banner-btn {
+  background-color: #b9a0ff;
+  color: #211832;
+}
+
+body.dark-mode .hero-banner-btn:hover {
+  background-color: #d0bfff;
+}
+
+
+
+/* ==========================
+   HERO BANNER SCROLL REVEAL
+========================== */
+
+.hero-banner-content.reveal {
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.hero-banner-content.reveal.reveal-left:not(.active) {
+  opacity: 0;
+  transform: translateX(-45px);
+}
+
+.hero-banner-content.reveal.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner-content.reveal,
+  .hero-banner-content.reveal.reveal-left:not(.active) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
