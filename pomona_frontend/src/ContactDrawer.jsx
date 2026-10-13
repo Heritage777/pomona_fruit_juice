@@ -9,7 +9,7 @@ function ContactDrawer({ isOpen, onClose }) {
     message: '',
   });
 
-  const emailAddress = 'khairahmotunrayo567@gmail.com';
+  const emailAddress = 'folorunsokhairah@gmail.com';
   const whatsappNumber = '2347033403644';
   const instagramUrl =
     'https://www.instagram.com/pomona.ng?obrf=eGU4ejAyMXp1c2cy';
