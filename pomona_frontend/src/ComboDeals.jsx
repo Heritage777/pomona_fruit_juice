@@ -1,5 +1,18 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {
+  EffectCoverflow,
+  Keyboard,
+  Mousewheel,
+  Pagination,
+} from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+
 import './ComboDeals.css';
+
 import duobottles from './assets/duobottles.JPG';
 import skybottles from './assets/skybottles.JPG';
 import boxof5 from './assets/boxof5.png';
@@ -13,7 +26,8 @@ function ComboDeals({ onSelectDeal }) {
       id: 'combo-duo',
       category: 'SIGNATURE COMBO',
       title: 'The Duo',
-      description: 'Two refreshing juice flavors. Double the goodness, your way.',
+      description:
+        'Two refreshing juice flavors. Double the goodness, your way.',
       discount: '5% OFF',
       priceText: 'Perfect for two',
       price: '₦4,750',
@@ -25,7 +39,8 @@ function ComboDeals({ onSelectDeal }) {
       id: 'combo-trio',
       category: 'SIGNATURE COMBO',
       title: 'The Trio',
-      description: 'Three flavors to keep your week colorful, fresh, and fruity.',
+      description:
+        'Three flavors to keep your week colorful, fresh, and fruity.',
       discount: '10% OFF',
       priceText: 'Our most-loved combo',
       price: '₦6,750',
@@ -37,7 +52,8 @@ function ComboDeals({ onSelectDeal }) {
       id: 'combo-pomona-box',
       category: 'SIGNATURE COMBO',
       title: 'The Pomona Box',
-      description: 'Five juice flavors plus one creamy smoothie. The full experience.',
+      description:
+        'Five juice flavors plus one creamy smoothie. The full experience.',
       discount: '10% OFF',
       priceText: 'The ultimate variety',
       price: '₦14,100',
@@ -52,7 +68,8 @@ function ComboDeals({ onSelectDeal }) {
       id: 'event-mini-pack',
       category: 'EVENT & BULK',
       title: 'Mini Pack',
-      description: 'A little something extra for intimate hangouts and small gatherings.',
+      description:
+        'A little something extra for intimate hangouts and small gatherings.',
       bottles: '20 Bottles',
       price: '₦46,000',
       image: minipack,
@@ -63,7 +80,8 @@ function ComboDeals({ onSelectDeal }) {
       id: 'event-party-pack',
       category: 'EVENT & BULK',
       title: 'Party Pack',
-      description: 'Keep the good vibes flowing at birthdays, parties, and celebrations.',
+      description:
+        'Keep the good vibes flowing at birthdays, parties, and celebrations.',
       bottles: '50 Bottles',
       price: '₦120,000',
       image: partypack,
@@ -74,7 +92,8 @@ function ComboDeals({ onSelectDeal }) {
       id: 'event-pomona-for-all',
       category: 'EVENT & BULK',
       title: 'Pomona For All',
-      description: 'A refreshing experience for weddings, corporate events, and big crowds.',
+      description:
+        'A refreshing experience for weddings, corporate events, and big crowds.',
       bottles: '100 Bottles',
       price: '₦245,000',
       image: oyinbusola,
@@ -100,9 +119,11 @@ function ComboDeals({ onSelectDeal }) {
     }
   };
 
-  const renderDealCard = (deal, isEvent = false) => (
+  const renderDealCard = (deal, index, isEvent = false) => (
     <article
-      className={`deal-card reveal ${deal.highlight ? 'featured' : ''}`}
+      className={`deal-card reveal reveal-stagger-${(index % 3) + 1} ${
+        deal.highlight ? 'featured' : ''
+      }`}
       key={deal.id}
     >
       {deal.highlight && (
@@ -129,23 +150,36 @@ function ComboDeals({ onSelectDeal }) {
       </div>
 
       <div className="deal-card-content">
-        <span className={`category-tag ${isEvent ? 'event-category' : ''}`}>
+        <span
+          className={`category-tag ${
+            isEvent ? 'event-category' : ''
+          }`}
+        >
           {deal.category}
         </span>
 
         <h4>{deal.title}</h4>
+
         <p className="deal-description">{deal.description}</p>
 
         <div className="deal-footer">
           <div className="deal-value">
             {isEvent ? (
               <>
-                <span className="deal-price-amount">{deal.price}</span>
-                <span className="deal-value-caption">Per pack</span>
+                <span className="deal-price-amount">
+                  {deal.price}
+                </span>
+
+                <span className="deal-value-caption">
+                  Per pack
+                </span>
               </>
             ) : (
               <>
-                <span className="deal-pricing">{deal.priceText}</span>
+                <span className="deal-pricing">
+                  {deal.priceText}
+                </span>
+
                 <span className="deal-value-caption">
                   More value in every order
                 </span>
@@ -155,8 +189,11 @@ function ComboDeals({ onSelectDeal }) {
 
           <button
             type="button"
-            className={`deal-action-btn ${isEvent ? 'event-btn' : ''}`}
+            className={`deal-action-btn ${
+              isEvent ? 'event-btn' : ''
+            }`}
             onClick={() => handleSelectDeal(deal)}
+            aria-label={`${isEvent ? 'Order' : 'Choose'} ${deal.title}`}
           >
             {isEvent ? 'Order Pack' : 'Choose Combo'}
           </button>
@@ -165,24 +202,74 @@ function ComboDeals({ onSelectDeal }) {
     </article>
   );
 
+  const renderDealsSwiper = (deals, isEvent = false) => (
+    <Swiper
+      className={`combos-swiper ${
+        isEvent ? 'event-swiper' : 'signature-swiper'
+      }`}
+      modules={[EffectCoverflow, Keyboard, Mousewheel, Pagination]}
+      effect="coverflow"
+      grabCursor={true}
+      centeredSlides={true}
+      slidesPerView="auto"
+      initialSlide={1}
+      keyboard={{
+        enabled: true,
+      }}
+      mousewheel={{
+        forceToAxis: true,
+        releaseOnEdges: true,
+      }}
+      pagination={{
+        clickable: true,
+        dynamicBullets: true,
+      }}
+      coverflowEffect={{
+        rotate: 25,
+        stretch: 0,
+        depth: 200,
+        modifier: 1,
+        slideShadows: false,
+      }}
+      breakpoints={{
+        320: {
+          slidesPerView: 1.2,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 2.2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+      }}
+    >
+      {deals.map((deal, index) => (
+        <SwiperSlide key={deal.id}>
+          {renderDealCard(deal, index, isEvent)}
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+
   return (
     <section className="combos-section" id="deals">
       <div className="combos-container">
-        {/* SECTION INTRODUCTION */}
         <header className="combos-header">
           <h2 className="reveal">
             Grab a bottle of Pomona ...
-            <span> Or maybe some more</span>
+            <span>Or maybe some more</span>
           </h2>
 
           <p className="reveal">
-            Your favorite flavors, thoughtfully bundled. Whether it’s
-            a little treat for yourself or refreshments for a crowd,
-            there’s a Pomona deal for you.
+            Your favorite flavors, thoughtfully bundled. Whether it’s a little
+            treat for yourself or refreshments for a crowd, there’s a Pomona
+            deal for you.
           </p>
         </header>
 
-        {/* SIGNATURE COMBOS */}
         <div className="deals-category-heading">
           <div className="reveal">
             <h3>Signature Combos</h3>
@@ -193,11 +280,8 @@ function ComboDeals({ onSelectDeal }) {
           </span>
         </div>
 
-        <div className="combos-grid">
-          {comboDeals.map((deal) => renderDealCard(deal))}
-        </div>
+        {renderDealsSwiper(comboDeals)}
 
-        {/* EVENT AND BULK PACKS */}
         <div className="deals-category-heading event-heading">
           <div className="reveal">
             <span className="category-eyebrow">
@@ -212,15 +296,10 @@ function ComboDeals({ onSelectDeal }) {
           </span>
         </div>
 
-        <div className="combos-grid">
-          {eventDeals.map((deal) => renderDealCard(deal, true))}
-        </div>
+        {renderDealsSwiper(eventDeals, true)}
 
-        {/* BOTTOM NOTE */}
         <div className="combos-bottom-note reveal">
-          <p>
-            Send us a mail or a whatsapp DM for bulk orders.
-          </p>
+          <p>Send us a mail or a WhatsApp DM for bulk orders.</p>
         </div>
       </div>
     </section>
