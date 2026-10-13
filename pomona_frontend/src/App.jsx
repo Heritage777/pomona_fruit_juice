@@ -284,6 +284,7 @@ const closeContact = () => setIsContactOpen(false);
         onAddToCart={handleAddToCart}
         onViewAll={() => alert('Navigating to all products')}
       />
+<ComboDeals onSelectDeal={handleAddToCart} />
 
       <WhyChooseUs
         title="Why Choose Pomona?"
@@ -292,14 +293,13 @@ const closeContact = () => setIsContactOpen(false);
 
       <Stats />
 
-      <HeroBanner onShopNow={() => setIsCartOpen(true)} />
 
-      <ComboDeals onSelectDeal={handleAddToCart} />
 
       <Testimonials
         title="What Our Customers Say"
         reviews={customerReviews}
-      />
+        />
+        <HeroBanner onShopNow={() => setIsCartOpen(true)} />
 
       <Newsletter />
 
