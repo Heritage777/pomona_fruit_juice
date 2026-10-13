@@ -2,6 +2,9 @@ import React, { useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
 import './CartDrawer.css';
 
+// Dynamic API base URL for local development vs production (Render)
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 function CartDrawer({ isOpen, onClose, cartItems = [], onUpdateQuantity, onRemoveItem }) {
   const [step, setStep] = useState('cart'); // 'cart' -> 'form' -> 'success'
   const [formData, setFormData] = useState({
@@ -39,8 +42,8 @@ function CartDrawer({ isOpen, onClose, cartItems = [], onUpdateQuantity, onRemov
     setIsSubmitting(true);
 
     try {
-      // 1. Send order data to Node.js backend
-      const response = await fetch('http://localhost:5000/api/orders', {
+      // 1. Send order data to Node.js backend using dynamic API URL
+      const response = await fetch(`${API_URL}/api/orders`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

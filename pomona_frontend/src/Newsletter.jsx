@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './Newsletter.css';
 
+// Dynamic API base URL for local development vs production (Render)
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 function Newsletter() {
   const [email, setEmail] = useState('');
   const [statusMsg, setStatusMsg] = useState({ text: '', isError: false });
@@ -14,7 +17,7 @@ function Newsletter() {
 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/newsletter/subscribe', {
+      const res = await fetch(`${API_URL}/api/newsletter/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })

@@ -11,7 +11,13 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'], // Your Vite dev server
+  origin: [
+    'http://localhost:5173', 
+    'http://127.0.0.1:5173',
+    'https://pomona-fruit-juice.onrender.com', // 👈 Add your live frontend URL here (update if your frontend is on Vercel/Netlify)
+    /\.onrender\.com$/,                        // 👈 Optional: allows any Render subdomain
+    /\.vercel\.app$/                           // 👈 Optional: allows any Vercel subdomain if you host there
+  ],
   credentials: true
 }));
 app.use(express.json());

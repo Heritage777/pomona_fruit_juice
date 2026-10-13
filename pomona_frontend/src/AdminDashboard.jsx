@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import html2canvas from 'html2canvas';
 import './AdminDashboard.css';
 
+// Dynamic API base URL for local development vs production (Render)
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passcode, setPasscode] = useState('');
@@ -22,7 +25,7 @@ function AdminDashboard() {
     setAuthError('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/admin/login', {
+      const res = await fetch(`${API_URL}/api/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ passcode })
@@ -57,7 +60,7 @@ function AdminDashboard() {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/admin/orders');
+      const res = await fetch(`${API_URL}/api/admin/orders`);
       const data = await res.json();
       if (data.success) {
         setOrders(data.orders);
@@ -72,7 +75,7 @@ function AdminDashboard() {
   // Fetch subscribers from Node.js backend
   const fetchSubscribers = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/admin/subscribers');
+      const res = await fetch(`${API_URL}/api/admin/subscribers`);
       const data = await res.json();
       if (data.success) {
         setSubscribers(data.subscribers);
@@ -99,7 +102,7 @@ function AdminDashboard() {
     const totalFormatted = formatNaira(totalAmountNum);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/orders/${orderId}/delivery-quote`, {
+      const res = await fetch(`${API_URL}/api/admin/orders/${orderId}/delivery-quote`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
