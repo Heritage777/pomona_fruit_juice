@@ -1,4 +1,6 @@
+
 // server.js
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -35,7 +37,12 @@ const emailTransporter = nodemailer.createTransport({
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
-  }
+  },
+  // Prevent an unresponsive mail connection from
+  // remaining open indefinitely.
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 15000
 });
 
 // ------------------------------------
@@ -163,6 +170,23 @@ async function sendOrderNotification(order) {
 }
 
 // ------------------------------------
+// HELPER: SEND EMAIL IN BACKGROUND
+// ------------------------------------
+
+function sendOrderNotificationInBackground(order) {
+  sendOrderNotification(order)
+    .then(() => {
+      console.log('✅ New order notification email sent!');
+    })
+    .catch((emailError) => {
+      console.error(
+        '❌ Failed to send order notification:',
+        emailError
+      );
+    });
+}
+
+// ------------------------------------
 // 1. CUSTOMER: SUBMIT NEW ORDER
 // ------------------------------------
 
@@ -203,21 +227,14 @@ app.post('/api/orders', async (req, res) => {
       status: 'Pending Delivery Quote'
     });
 
-    // Save order first
+    // Save the order to MongoDB first.
     const savedOrder = await newOrder.save();
 
-    // Send admin email notification
-    try {
-      await sendOrderNotification(savedOrder);
+    // Start email notification independently.
+    // The customer does NOT wait for Gmail.
+    sendOrderNotificationInBackground(savedOrder);
 
-      console.log('✅ New order notification email sent!');
-    } catch (emailError) {
-      console.error(
-        '❌ Failed to send order notification:',
-        emailError
-      );
-    }
-
+    // Respond immediately after the order is saved.
     return res.status(201).json({
       success: true,
       message: 'Order submitted successfully! Our team will contact you shortly.',
@@ -254,6 +271,45 @@ app.get('/api/admin/orders', async (req, res) => {
     return res.status(500).json({
       success: false,
       message: 'Failed to retrieve orders.'
+    });
+  }
+});
+
+
+
+// ------------------------------------
+// ADMIN: DELETE AN ORDER
+// ------------------------------------
+
+app.delete('/api/admin/orders/:id', async (req, res) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid order ID.'
+      });
+    }
+
+    const deletedOrder = await Order.findByIdAndDelete(req.params.id);
+
+    if (!deletedOrder) {
+      return res.status(404).json({
+        success: false,
+        message: 'Order not found.'
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: 'Order deleted successfully!'
+    });
+
+  } catch (error) {
+    console.error('Error deleting order:', error);
+
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to delete order.'
     });
   }
 });

@@ -1,4 +1,6 @@
+
 // models/Order.js
+
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
@@ -7,45 +9,60 @@ const orderSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+
   whatsappNumber: {
     type: String,
     required: true,
     trim: true
   },
+
   deliveryAddress: {
     type: String,
     required: true
   },
+
   deliveryDate: {
     type: String,
     required: true
   },
+
   items: [
     {
-      id: Number,
+      id: String,
       name: String,
       quantity: Number,
       price: String,
       description: String
     }
   ],
+
   subtotal: {
     type: Number,
     required: true
   },
+
   deliveryFee: {
     type: String,
-    default: 'TBD' // "To Be Determined" until admin adds fee
+    default: 'TBD'
   },
+
   totalAmount: {
     type: String,
     default: 'To be confirmed via WhatsApp'
   },
+
   status: {
     type: String,
-    enum: ['Pending Delivery Quote', 'Quote Sent', 'Paid & Confirmed', 'Delivered', 'Cancelled'],
+    enum: [
+      'Pending Delivery Quote',
+      'Quote Sent',
+      'Paid & Confirmed',
+      'Delivered',
+      'Cancelled'
+    ],
     default: 'Pending Delivery Quote'
   },
+
   createdAt: {
     type: Date,
     default: Date.now
