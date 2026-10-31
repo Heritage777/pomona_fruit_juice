@@ -87,6 +87,18 @@ function AdminDashboard() {
 
   const formatNaira = (amount) => '₦' + Number(amount).toLocaleString();
 
+  // Convert phone number to WhatsApp international format
+const getWhatsAppNumber = (phone) => {
+  let number = String(phone || '').replace(/\D/g, '');
+
+  // Nigerian number: 08012345678 -> 2348012345678
+  if (number.startsWith('0')) {
+    number = '234' + number.slice(1);
+  }
+
+  return number;
+};
+
   // Handle setting delivery fee & updating database
   const handleUpdateDeliveryFee = async (orderId) => {
     if (!deliveryFeeInput || isNaN(deliveryFeeInput)) {
@@ -285,12 +297,59 @@ function AdminDashboard() {
                       </span>
                     </div>
 
-                    <div className="order-meta-details">
-                      <p><strong>WhatsApp:</strong> <a href={`https://wa.me/${order.whatsappNumber}`} target="_blank" rel="noreferrer">{order.whatsappNumber}</a></p>
-                      <p><strong>Address:</strong> {order.deliveryAddress}</p>
-                      <p><strong>Delivery Date:</strong> {order.deliveryDate}</p>
-                      <p><strong>Date Placed:</strong> {new Date(order.createdAt).toLocaleString()}</p>
-                    </div>
+                   <div className="order-meta-details">
+  <p>
+    <strong>WhatsApp:</strong>{' '}
+
+    <a
+      href={`https://wa.me/${getWhatsAppNumber(order.whatsappNumber)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        color: '#25D366',
+        fontWeight: 'bold',
+        textDecoration: 'none'
+      }}
+    >
+      {order.whatsappNumber}
+    </a>
+  </p>
+
+  <p>
+    <strong>Address:</strong> {order.deliveryAddress}
+  </p>
+
+  <p>
+    <strong>Delivery Date:</strong> {order.deliveryDate}
+  </p>
+
+  <p>
+    <strong>Date Placed:</strong>{' '}
+    {new Date(order.createdAt).toLocaleString()}
+  </p>
+
+  <a
+    href={`https://wa.me/${getWhatsAppNumber(order.whatsappNumber)}?text=${encodeURIComponent(
+      `Hello ${order.customerName}, thank you for placing an order with Pomona Juice! We have received your order and will contact you shortly regarding your delivery.`
+    )}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="whatsapp-send-quote-btn"
+    style={{
+      display: 'inline-block',
+      marginTop: '10px',
+      padding: '10px 16px',
+      backgroundColor: '#25D366',
+      color: '#ffffff',
+      borderRadius: '8px',
+      textDecoration: 'none',
+      fontWeight: 'bold',
+      textAlign: 'center'
+    }}
+  >
+    Message Customer on WhatsApp
+  </a>
+</div>
 
                     <div className="order-items-summary">
                       <h4>Items Ordered:</h4>
