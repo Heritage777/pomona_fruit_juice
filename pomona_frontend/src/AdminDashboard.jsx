@@ -787,11 +787,11 @@ function AdminDashboard() {
 
             <div className="ticket-footer-note">
               <p>
-                <strong>Bank Transfer:</strong> OPay / 7033403644
+                <strong>Bank Transfer:</strong> Moniepoint MFB / 6938507276
               </p>
 
               <p>
-                <strong>Account Name:</strong> Pomona Juice Nigeria
+                <strong>Account Name:</strong> Khairah Motunrayo Folorunso
               </p>
 
               <p className="footer-tag">

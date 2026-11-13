@@ -36,14 +36,14 @@ const juiceData = [
   {
     id: 2,
     name: 'Tropical Blend',
-    description: 'Carrot & Pineapple',
+    description: 'Carrot, Pineapple & Ginger',
     price: '₦2,500',
     image: pineappleAndCarrot,
   },
   {
     id: 3,
     name: 'Tangy Blend',
-    description: 'Cucumber & Tangerine',
+    description: 'Cucumber & Pineapple',
     price: '₦2,500',
     image: cucumberAndTangerine,
   },

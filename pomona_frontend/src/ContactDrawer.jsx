@@ -14,7 +14,7 @@ function ContactDrawer({ isOpen, onClose }) {
   const instagramUrl =
     'https://www.instagram.com/pomona.ng?obrf=eGU4ejAyMXp1c2cy';
   const tiktokUrl =
-    'https://www.tiktok.com/@pomona_fruits?_r=1&_t=ZS-9AVU4xMQQMf';
+    'https://www.tiktok.com/@pomona_ng?_r=1&_t=ZS-9BF6vX7CFhh';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
